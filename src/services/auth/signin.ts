@@ -1,12 +1,12 @@
-import { ApiContext,User } from 'types'
+import { ApiContext,User } from 'types/data'
 import { fetcher } from 'utils'
 
-export types SigninParams = {
+export type SigninParams = {
   /**
    * ユーザー名
    * サンプルユーザーのユーザー名は"user"
    */
-  username: string,
+  username: string
   /**
    * パスワード
    * サンプルユーザーのパスワードは"password"
