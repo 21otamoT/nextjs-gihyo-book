@@ -37,10 +37,10 @@ export function toPropValue<T>(
   if (prop === undefined) return undefined
 
   if (isResponsivePropType(prop)) {
-    const result: any = []
+    const result = []
     for (const responsiveKey in prop) {
       if (responsiveKey === 'base') {
-        result.path(
+        result.push(
           `${propKey}: ${toThemeValueIfNeeded(
             propKey,
             prop[responsiveKey],
@@ -59,7 +59,7 @@ export function toPropValue<T>(
           prop[responsiveKey],
           theme,
         )}`
-        result.puth(`@media screen and (min-width: ${breakpoint}) {${style}}`)
+        result.push(`@media screen and (min-width: ${breakpoint}) {${style}}`)
       }
     }
     return result.join(`\n`)
