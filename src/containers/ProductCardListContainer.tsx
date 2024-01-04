@@ -4,7 +4,7 @@ import Box from 'components/layout/Box'
 import ProductCard from 'components/organisms/ProductCard'
 import ProductCardList from 'components/organisms/ProductCardList'
 import useSearch from 'services/products/use-search'
-import type { ApiContext, Category, Condition } from 'types'
+import type { ApiContext, Category, Condition } from 'types/data'
 
 const context: ApiContext = {
   apiRootUrl: process.env.NEXT_PUBLIC_API_BASE_PATH || '/api/proxy',

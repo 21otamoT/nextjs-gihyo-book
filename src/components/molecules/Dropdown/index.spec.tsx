@@ -44,7 +44,8 @@ describe('Dropdown', () => {
     // ドロップダウンの選択肢のビューから選択
     const elements = await screen.getAllByTestId('dropdown-option')
     elements && fireEvent.click(elements[0])
-
+    
+    //オプションを選択したか確認
     expect(handleChange).toHaveBeenCalledTimes(1)
   })
 })

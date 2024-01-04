@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components'
 import Header from '.'
 import { AuthContextProvider } from 'contexts/AuthContext'
 import { theme } from 'themes'
-import type { User, Product } from 'types'
+import type { User, Product } from 'types/data'
 
 // ShoppingCartContextのモック
 jest.mock('contexts/ShoppingCartContext')
