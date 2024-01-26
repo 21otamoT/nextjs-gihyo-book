@@ -44,26 +44,24 @@ export function toPropValue<T>(
   if (isResponsivePropType(prop)) {
     const result = []
     for (const responsiveKey in prop) {
+        console.log(responsiveKey)
       if (responsiveKey === 'base') {
         // デフォルトのスタイル
         result.push(
           `${propKey}: ${toThemeValueIfNeeded(
             propKey,
-            prop[responsiveKey],
+            value,
             theme,
           )};`,
         )
       } else if (
-        responsiveKey === 'sm' ||
-        responsiveKey === 'md' ||
-        responsiveKey === 'lg' ||
-        responsiveKey === 'xl'
+        responsiveKey === 'sm' || 'md' || 'lg' || 'xl'
       ) {
         // メディアクエリでのスタイル
         const breakpoint = BREAKPOINTS[responsiveKey]
         const style = `${propKey}: ${toThemeValueIfNeeded(
           propKey,
-          prop[responsiveKey],
+          prop,
           theme,
         )};`
         result.push(`@media screen and (min-width: ${breakpoint}) {${style}}`)
@@ -99,7 +97,7 @@ const LINE_HEIGHT_KEYS = new Set(['line-height'])
  * @param theme AppTheme
  * @returns CSSプロパティの値
  */
-function toThemeValueIfNeeded<T>(propKey: string, value: T, theme?: AppTheme) {
+function toThemeValueIfNeeded<T extends keyof AppTheme>(propKey: string, value: T, theme?: AppTheme) {
   if (
     theme &&
     theme.space &&
@@ -140,8 +138,7 @@ function toThemeValueIfNeeded<T>(propKey: string, value: T, theme?: AppTheme) {
   return value
 }
 
-
-function isResponsivePropType<T>(prop: any): prop is ResponsiveProp<T> {
+function isResponsivePropType<T>(prop: any):ResponsiveProp<T> {
   return (
     prop &&
     (prop.base !== undefined ||

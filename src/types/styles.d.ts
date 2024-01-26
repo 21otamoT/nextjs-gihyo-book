@@ -9,7 +9,6 @@ export type ResponsiveProp<T> = {
   lg?: T
   xl?: T
 }
-
 export type Responsive<T> = T | ResponsiveProp<T>
 
 /**
